@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "554597806635",
+    "project_id": "veggy-511ec",
+    "storage_bucket": "veggy-511ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554597806635:android:b73ce04d7d00cc59e8f06e",
+        "android_client_info": {
+          "package_name": "com.veggy.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554597806635-7v5hh35n681c4idqrvgesc7j7id3reoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpE6vL8I85PVA8jBY9hyZM9cidrGQpXyI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554597806635-7v5hh35n681c4idqrvgesc7j7id3reoh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

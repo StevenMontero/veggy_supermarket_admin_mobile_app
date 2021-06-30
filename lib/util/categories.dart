@@ -1,0 +1,21 @@
+  
+  final List<String> categiries = [
+    'ABARROTES',
+    'ACCESORIOS Y OTROS',
+    'CARNE DE CERDO',
+    'CARNE DE POLLO',
+    'CARNE DE RES',
+    'EMBUTIDOS',
+    'FLORISTERIA',
+    'FRUTAS',
+    'GRANEL',
+    'LACTEOS',
+    'LEGUMBRES',
+    'LICORES',
+    'MARISCOS',
+    'MATERIA PRIMA FABRICA DE PLASTICO',
+    'PROCESADOS',
+    'PRODUCTO TERMINADO FABRICA DE PLASTICO',
+    'TUBERCULOS',
+    'VERDURAS'
+  ];
