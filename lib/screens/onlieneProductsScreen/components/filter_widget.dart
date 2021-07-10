@@ -18,7 +18,7 @@ class FilterWidget extends StatelessWidget {
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
-            "Filtros",
+            "Filtros - Productos Online",
             style: Theme.of(context).textTheme.headline6,
           ),
           SizedBox(
