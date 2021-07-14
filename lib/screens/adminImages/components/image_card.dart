@@ -15,8 +15,9 @@ class ImageCard extends StatelessWidget {
       child: Column(
         children: [
           (imageURL != "")
-              ? Image(
+              ? FadeInImage(
                   image: NetworkImage(imageURL),
+                  placeholder: AssetImage('assets/images/loadingGif.gif') ,
                   height: 200,
                   width: 400,
                   fit: BoxFit.fill,
