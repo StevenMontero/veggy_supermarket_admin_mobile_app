@@ -10,7 +10,8 @@ class ProdectsTableWidget extends StatelessWidget {
   ProdectsTableWidget({
     Key? key,
   }) : super(key: key);
-  final ScrollController _controller = ScrollController();
+  final ScrollController _controller =
+      ScrollController(initialScrollOffset: 0.0);
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,40 @@ class ProdectsTableWidget extends StatelessWidget {
               controller: _controller,
               child: BlocBuilder<OnlineproductsCubit, OnlineproductsState>(
                 builder: (context, state) {
+                  if (state.listProduct.isNotEmpty) {
+                    return DataTable2(
+                        scrollController: _controller,
+                        columnSpacing: defaultPadding,
+                        minWidth: 600,
+                        columns: [
+                          DataColumn(
+                            label: Text(""),
+                          ),
+                          DataColumn(
+                            label: Text("Nombre Producto"),
+                          ),
+                          DataColumn(
+                            label: Text("Codigo"),
+                          ),
+                        ],
+                        rows: state.listProductSearch.isNotEmpty
+                            ? List.generate(
+                                state.listProductSearch.length,
+                                (index) => recentFileDataRow(
+                                    state.listProductSearch[index],
+                                    context,
+                                    index,
+                                    true),
+                              )
+                            : List.generate(
+                                state.listProduct.length,
+                                (index) => recentFileDataRow(
+                                    state.listProduct[index],
+                                    context,
+                                    index,
+                                    false),
+                              ));
+                  }
                   return DataTable2(
                       scrollController: _controller,
                       columnSpacing: defaultPadding,
@@ -50,23 +85,28 @@ class ProdectsTableWidget extends StatelessWidget {
                           label: Text("Codigo"),
                         ),
                       ],
-                      rows: state.listProductSearch.isNotEmpty
-                          ? List.generate(
-                              state.listProductSearch.length,
-                              (index) => recentFileDataRow(
-                                  state.listProductSearch[index],
-                                  context,
-                                  index,
-                                  true),
-                            )
-                          : List.generate(
-                              state.listProduct.length,
-                              (index) => recentFileDataRow(
-                                  state.listProduct[index],
-                                  context,
-                                  index,
-                                  false),
-                            ));
+                      rows: [
+                        DataRow(cells: [
+                          DataCell(
+                            Text(
+                              '',
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              '',
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              '',
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ])
+                      ]);
                 },
               ),
             ),

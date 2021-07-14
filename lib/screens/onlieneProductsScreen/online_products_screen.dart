@@ -16,7 +16,7 @@ class ProdectsOnlineScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => OnlineproductsCubit(),
-      child: Body(),
+      child: SafeArea(child: Body()),
     );
   }
 }

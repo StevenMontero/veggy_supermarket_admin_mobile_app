@@ -11,65 +11,55 @@ class ImageBannersView extends StatefulWidget {
 class _ImageBannersViewState extends State<ImageBannersView> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: EdgeInsets.only(top: 8.0),
-            child: BlocBuilder<ImagebannersCubit, ImagebannersState>(
-              builder: (context, state) {
-                if (state.existImage == Status.loading) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                if (state.existImage == Status.noExist) {
-                  return Center(
-                    child: Text(
-                      'Error al cargar las imagenes. Intente más tarde.',
-                      textAlign: TextAlign.center,
-                    ),
-                  );
-                }
-                if (state.existImage == Status.exist) {
-                  if (state.imageList!.isEmpty) {
-                    return Center(
-                      child: Text(
-                        'No se encontraron imagenes para mostrar',
-                        textAlign: TextAlign.center,
-                      ),
-                    );
-                  }
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.all(5.0),
-                    itemCount: state.imageList!.length,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ImageCard(
-                        imageURL: state.imageList!.elementAt(index),
-                        onPressed: () {
-                          context
-                              .read<ImagebannersCubit>()
-                              .deleteImage(state.imageList![index], index);
-                          ScaffoldMessenger.of(context)
-                            ..hideCurrentSnackBar()
-                            ..showSnackBar(
-                              const SnackBar(content: Text('Eliminación Exitosa')),
-                            );
-                        },
-                      ),
-                    ),
-                  );
-                }
-                return Container();
-              },
+    return BlocBuilder<ImagebannersCubit, ImagebannersState>(
+      builder: (context, state) {
+        if (state.existImage == Status.loading) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        if (state.existImage == Status.noExist) {
+          return Center(
+            child: Text(
+              'Error al cargar las imagenes. Intente más tarde.',
+              textAlign: TextAlign.center,
             ),
-          ),
-        ],
-      ),
+          );
+        }
+        if (state.existImage == Status.exist) {
+          if (state.imageList!.isEmpty) {
+            return Center(
+              child: Text(
+                'No se encontraron imagenes para mostrar',
+                textAlign: TextAlign.center,
+              ),
+            );
+          }
+          return ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            padding: EdgeInsets.all(5.0),
+            itemCount: state.imageList!.length,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ImageCard(
+                imageURL: state.imageList!.elementAt(index),
+                onPressed: () {
+                  context
+                      .read<ImagebannersCubit>()
+                      .deleteImage(state.imageList![index], index);
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      const SnackBar(content: Text('Eliminación Exitosa')),
+                    );
+                },
+              ),
+            ),
+          );
+        }
+        return Container();
+      },
     );
   }
 }

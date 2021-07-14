@@ -1,4 +1,3 @@
-
 import 'package:admin/screens/main/cubit/mainpage_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +25,6 @@ class SideMenu extends StatelessWidget {
             press: () {
               context.read<MainpageCubit>().changedPage('images');
               Navigator.of(context).pop();
-
             },
           ),
           Divider(),
@@ -49,9 +47,12 @@ class SideMenu extends StatelessWidget {
           ),
           Divider(),
           DrawerListTile(
-            title: "Ordenes",
+            title: "Emails clientes",
             svgSrc: "assets/icons/menu_notification.svg",
-            press: () {},
+            press: () {
+              context.read<MainpageCubit>().changedPage('emails');
+              Navigator.of(context).pop();
+            },
           ),
           Divider(),
         ],

@@ -164,7 +164,7 @@ class _Body extends StatelessWidget {
     return AppBar(
       leading: SafeArea(
         child: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),

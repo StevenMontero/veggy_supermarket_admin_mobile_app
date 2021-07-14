@@ -11,7 +11,7 @@ class AdminImagesScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           ImagebannersCubit(BannerRepository())..getAllBannersImages(),
-      child: _Body(),
+      child: SafeArea(child: _Body()),
     );
   }
 }
@@ -20,10 +20,10 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Column(
         children: [
           Header(),
-          ImageBannersView(),
+          Expanded(child: ImageBannersView()),
         ],
       ),
       floatingActionButton: FloatingActionButton(

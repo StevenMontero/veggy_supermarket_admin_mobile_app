@@ -1,4 +1,5 @@
 import 'package:admin/screens/LocalProductsScreen/local_products_screen.dart';
+import 'package:admin/screens/ViewEmails/view_emails_screen.dart';
 import 'package:admin/screens/adminImages/add_image_screen.dart';
 import 'package:admin/screens/adminImages/admin_images_screen.dart';
 import 'package:admin/screens/main/main_screen.dart';
@@ -12,5 +13,6 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'qupos': (BuildContext context) => ProdectsLocalScreen(),
     'images': (BuildContext context) => AdminImagesScreen(),
     'addImage': (BuildContext context) => AddImageScreen(),
+    'emails': (BuildContext context) => ViewEmailsScreen(),
   };
 }

@@ -1,4 +1,5 @@
 import 'package:admin/screens/LocalProductsScreen/local_products_screen.dart';
+import 'package:admin/screens/ViewEmails/view_emails_screen.dart';
 import 'package:admin/screens/adminImages/admin_images_screen.dart';
 import 'package:admin/screens/onlieneProductsScreen/online_products_screen.dart';
 import 'package:bloc/bloc.dart';
@@ -11,6 +12,7 @@ class MainpageCubit extends Cubit<Widget> {
     '/': ProdectsOnlineScreen(),
     'qupos': ProdectsLocalScreen(),
     'images': AdminImagesScreen(),
+    'emails': ViewEmailsScreen(),
   };
 
   void changedPage(String raute) {
