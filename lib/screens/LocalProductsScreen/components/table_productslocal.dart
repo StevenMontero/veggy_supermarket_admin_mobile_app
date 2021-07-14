@@ -29,6 +29,9 @@ class ProdectsTableWidgetLocal extends StatelessWidget {
             style: Theme.of(context).textTheme.subtitle1,
           ),
           SizedBox(
+            height: 5,
+          ),
+          SizedBox(
             height: 500,
             width: double.infinity,
             child: Scrollbar(
@@ -77,6 +80,22 @@ class ProdectsTableWidgetLocal extends StatelessWidget {
                 );
               }),
             ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          BlocBuilder<LocalproductsCubit, LocalproductsState>(
+            builder: (context, state) {
+              return ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.indigo),
+                  onPressed: state.listProduct.isNotEmpty &&
+                          state.listProductRaw.length > state.lastIndex &&
+                          state.listProductSearch.isEmpty
+                      ? () =>
+                          context.read<LocalproductsCubit>().get10MoreProducts()
+                      : null,
+                  child: Text('Cargar más productos'));
+            },
           ),
         ],
       ),

@@ -14,7 +14,7 @@ class ProdectsLocalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: BlocProvider(
-        create: (context) => LocalproductsCubit()..loadProduct(),
+        create: (context) => LocalproductsCubit()..loadInitialProduct(),
         child: Body(),
       ),
     );
