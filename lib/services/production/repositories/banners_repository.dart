@@ -7,6 +7,10 @@ class BannerRepository {
   Reference storageRef = FirebaseStorage.instance.ref().child('Banners');
   List<String> imagelist = [];
 
+  /*Este método recibe una imagen en formato File para posteriormente cargarla
+   al almacenamiento de firebase de las imagenes que se cargan al Carrouselk en la página web.
+   @Params : File image, archivo de tipo imatgen.
+   @Return : void*/
   void addNewImage(File file)async{
     String filePath = p.basename(file.path);
     await storageRef.child('$filePath').putFile(file);

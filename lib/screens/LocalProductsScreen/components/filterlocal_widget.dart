@@ -41,11 +41,11 @@ class FilterWidgetLocal extends StatelessWidget {
                           .searchCodeProduct(value),
                       decoration: InputDecoration(
                         icon: Icon(Icons.qr_code_rounded),
-                        labelText: 'Codigo del producto',
+                        labelText: 'Código del producto',
                         labelStyle: TextStyle(
                           color: Colors.green,
                         ),
-                        hintText: 'Buscar por codigo',
+                        hintText: 'Buscar por código',
                         suffixIcon: Icon(
                           Icons.check_circle,
                         ),

@@ -14,13 +14,23 @@ class ImageCard extends StatelessWidget {
     return Card(
       child: Column(
         children: [
-          (imageURL != "") ? Image.network(imageURL) : Image.asset('imagen_no_disponible.png'),
+          (imageURL != "")
+              ? Image(
+                  image: NetworkImage(imageURL),
+                  height: 200,
+                  width: 400,
+                  fit: BoxFit.fill,
+                )
+              : Image(
+                  image: AssetImage('imagen_no_disponible.png'),
+                  height: 200,
+                  width: 400,
+                  fit: BoxFit.fill,
+                ),
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                onPressed: onPressed,
-                icon: Icon(Icons.delete))
+              IconButton(onPressed: onPressed, icon: Icon(Icons.delete))
             ],
           ),
         ],

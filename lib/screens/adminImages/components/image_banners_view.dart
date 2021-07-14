@@ -21,7 +21,7 @@ class _ImageBannersViewState extends State<ImageBannersView> {
         if (state.existImage == Status.noExist) {
           return Center(
             child: Text(
-              'Error al cargar las imagenes. Intente más tarde.',
+              'Error al cargar las imágenes. Intente más tarde.',
               textAlign: TextAlign.center,
             ),
           );
@@ -30,7 +30,7 @@ class _ImageBannersViewState extends State<ImageBannersView> {
           if (state.imageList!.isEmpty) {
             return Center(
               child: Text(
-                'No se encontraron imagenes para mostrar',
+                'No se encontraron imágenes para mostrar',
                 textAlign: TextAlign.center,
               ),
             );
