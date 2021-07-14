@@ -101,7 +101,7 @@ class ProdectsTableWidgetLocal extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Siguiente',
+                          'Volver',
                         ),
                         Icon(
                           Icons.arrow_left,
