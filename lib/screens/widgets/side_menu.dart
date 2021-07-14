@@ -20,7 +20,7 @@ class SideMenu extends StatelessWidget {
           ),
           Divider(),
           DrawerListTile(
-            title: "Imagenes promocionales",
+            title: "Imágenes Promocionales",
             svgSrc: "assets/icons/menu_dashbord.svg",
             press: () {
               context.read<MainpageCubit>().changedPage('images');
@@ -38,7 +38,7 @@ class SideMenu extends StatelessWidget {
           ),
           Divider(),
           DrawerListTile(
-            title: "Productos Subidos",
+            title: "Productos Online",
             svgSrc: "assets/icons/menu_store.svg",
             press: () {
               context.read<MainpageCubit>().changedPage('/');

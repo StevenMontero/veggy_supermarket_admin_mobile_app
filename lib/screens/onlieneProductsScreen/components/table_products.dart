@@ -49,7 +49,7 @@ class ProdectsTableWidget extends StatelessWidget {
                             label: Text("Nombre Producto"),
                           ),
                           DataColumn(
-                            label: Text("Codigo"),
+                            label: Text("Código"),
                           ),
                         ],
                         rows: state.listProductSearch.isNotEmpty
@@ -82,7 +82,7 @@ class ProdectsTableWidget extends StatelessWidget {
                           label: Text("Nombre Producto"),
                         ),
                         DataColumn(
-                          label: Text("Codigo"),
+                          label: Text("Código"),
                         ),
                       ],
                       rows: [

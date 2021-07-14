@@ -27,6 +27,9 @@ class _Body extends StatelessWidget {
       //backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
+          SizedBox(
+            width: 10,
+          ),
           _viewPhoto(),
           SizedBox(
             width: 5,
@@ -49,24 +52,33 @@ class _Body extends StatelessWidget {
   }
 
   Widget _viewPhoto() {
-    return BlocBuilder<ImagebannersCubit, ImagebannersState>(
-      buildWhen: (previous, current) => previous.photo != current.photo,
-      builder: (context, state) {
-        if (state.photo != null) {
-          return Image(
-            image: FileImage(state.photo!),
-            height: 400.0,
-            fit: BoxFit.cover,
-          );
-        } else {
-          return Image(
-            image: AssetImage('assets/images/imagen_no_disponible.png'),
-            height: 300.0,
-            width: 300,
-            fit: BoxFit.fill,
-          );
-        }
-      },
+    return Container(
+      margin: EdgeInsets.only(top: 25, left: 12, right: 12, bottom: 15),
+      padding: EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(2.0)),
+        border: Border.all(color: Colors.white),
+      ),
+      child: BlocBuilder<ImagebannersCubit, ImagebannersState>(
+        buildWhen: (previous, current) => previous.photo != current.photo,
+        builder: (context, state) {
+          if (state.photo != null) {
+            return Image(
+              image: FileImage(state.photo!),
+              height: 200.0,
+              width: 400,
+              fit: BoxFit.cover,
+            );
+          } else {
+            return Image(
+              image: AssetImage('assets/images/imagen_no_disponible.png'),
+              height: 250.0,
+              width: 250,
+              fit: BoxFit.scaleDown,
+            );
+          }
+        },
+      ),
     );
   }
 
@@ -94,7 +106,7 @@ class _Body extends StatelessWidget {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
-                const SnackBar(content: Text('Imagen agregada éxitosamente')),
+                const SnackBar(content: Text('Imagen agregada exitosamente')),
               );
             Navigator.pushNamed(context, 'images');
           }
@@ -169,7 +181,7 @@ class _Body extends StatelessWidget {
         ),
       ),
       centerTitle: true,
-      title: Text('Agregar Imagenes'),
+      title: Text('Agregar Imágenes'),
     );
   }
 }
