@@ -15,35 +15,53 @@ class LocalproductsCubit extends Cubit<LocalproductsState> {
     emit(state.copyWhith(status: StatusLocal.loading));
     final productsRawData = await _repoLocal.getProductsQuposRaw();
     emit(state.copyWhith(listProductRaw: productsRawData));
-    final productsAPI = _listProductPaginatated(state.lastIndex,
-        productsRawData.length >= 10 ? 10 : productsRawData.length);
+    final end = productsRawData.length >= 10 ? 10 : productsRawData.length;
+    final productsAPI = _listProductPaginatated(state.lastIndex, end);
     emit(state.copyWhith(
         status: StatusLocal.loaded,
         listProductRaw: productsRawData,
         lastIndex: productsAPI.length,
+        advancedQuantity: end,
         listProduct: productsAPI));
   }
 
   void get10MoreProducts() async {
     emit(state.copyWhith(status: StatusLocal.loading));
     final leghtRawData = state.listProductRaw.length;
+    int end = 0;
     List<ProductApi> products = [];
     if (leghtRawData > state.lastIndex) {
       int auxSubtract = state.listProductRaw.length - state.lastIndex;
       if (auxSubtract >= 10) {
-        products =
-            _listProductPaginatated(state.lastIndex, state.lastIndex + 10);
+        end = state.lastIndex + 10;
+        products = _listProductPaginatated(state.lastIndex, end);
       } else {
+        end = state.lastIndex + auxSubtract;
         products = _listProductPaginatated(state.lastIndex, auxSubtract);
       }
     }
-    final auxJoinList = state.listProduct + products;
-
+    
     emit(state.copyWhith(
       status: StatusLocal.loaded,
-      listProduct: auxJoinList,
-      lastIndex: auxJoinList.length,
+      listProduct: products,
+      lastIndex: end,
+      previousIndex: state.lastIndex,
     ));
+  }
+
+  void getBack10Products() async {
+    if (state.previousIndex > 0) {
+      emit(state.copyWhith(status: StatusLocal.loading));
+      final products = _listProductPaginatated(
+          state.previousIndex - 10, state.previousIndex);
+
+      emit(state.copyWhith(
+        status: StatusLocal.loaded,
+        listProduct: products,
+        lastIndex: state.previousIndex,
+        previousIndex: state.previousIndex - 10,
+      ));
+    }
   }
 
   void searchCodeProduct(String code) async {

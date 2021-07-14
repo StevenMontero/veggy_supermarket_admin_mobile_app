@@ -86,15 +86,58 @@ class ProdectsTableWidgetLocal extends StatelessWidget {
           ),
           BlocBuilder<LocalproductsCubit, LocalproductsState>(
             builder: (context, state) {
-              return ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.indigo),
-                  onPressed: state.listProduct.isNotEmpty &&
-                          state.listProductRaw.length > state.lastIndex &&
-                          state.listProductSearch.isEmpty
-                      ? () =>
-                          context.read<LocalproductsCubit>().get10MoreProducts()
-                      : null,
-                  child: Text('Cargar más productos'));
+              return Row(
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.indigo),
+                    onPressed: state.listProduct.isNotEmpty &&
+                            state.previousIndex > 0 &&
+                            state.listProductSearch.isEmpty
+                        ? () => context
+                            .read<LocalproductsCubit>()
+                            .getBack10Products()
+                        : null,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Siguiente',
+                        ),
+                        Icon(
+                          Icons.arrow_left,
+                          color: Colors.white,
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  ElevatedButton(
+                    // icon: Icon(Icons.arrow_left),
+                    style: ElevatedButton.styleFrom(primary: Colors.indigo),
+                    onPressed: state.listProduct.isNotEmpty &&
+                            state.listProductRaw.length > state.lastIndex &&
+                            state.listProductSearch.isEmpty
+                        ? () => context
+                            .read<LocalproductsCubit>()
+                            .get10MoreProducts()
+                        : null,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Siguiente',
+                        ),
+                        Icon(
+                          Icons.arrow_right,
+                          color: Colors.white,
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              );
             },
           ),
         ],

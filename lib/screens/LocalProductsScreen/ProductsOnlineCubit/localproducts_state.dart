@@ -10,6 +10,8 @@ class LocalproductsState extends Equatable {
       this.listProductRaw = const [],
       this.codeProduc = '',
       this.lastIndex = 0,
+      this.previousIndex = 0,
+      this.advancedQuantity = 0,
       this.statusUpdate = StatusUpdateLocal.pure,
       this.listProductSearch = const [],
       this.status = StatusLocal.pure});
@@ -22,6 +24,8 @@ class LocalproductsState extends Equatable {
   final String categorySelected;
   final StatusUpdateLocal statusUpdate;
   final int lastIndex;
+  final int previousIndex;
+  final int advancedQuantity;
 
   LocalproductsState copyWhith(
       {List<ProductApi>? listProduct,
@@ -31,6 +35,8 @@ class LocalproductsState extends Equatable {
       List<ProductApi>? listProductSearch,
       List<dynamic>? listProductRaw,
       int? lastIndex,
+      int? previousIndex,
+      int? advancedQuantity,
       String? categorySelected}) {
     return LocalproductsState(
         listProduct: listProduct ?? this.listProduct,
@@ -40,6 +46,8 @@ class LocalproductsState extends Equatable {
         listProductRaw: listProductRaw ?? this.listProductRaw,
         statusUpdate: statusUpdate ?? this.statusUpdate,
         lastIndex: lastIndex ?? this.lastIndex,
+        previousIndex: previousIndex ?? this.previousIndex,
+        advancedQuantity: advancedQuantity ?? this.advancedQuantity,
         status: status ?? this.status);
   }
 
@@ -52,6 +60,7 @@ class LocalproductsState extends Equatable {
         listProductSearch,
         listProductRaw,
         lastIndex,
+        previousIndex,
         statusUpdate
       ];
 }
