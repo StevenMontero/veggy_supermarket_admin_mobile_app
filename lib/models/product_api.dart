@@ -45,7 +45,7 @@ class ProductApi {
       this.grossWeight = 0.0,
       this.inStock = 0,
       this.unitType = 0,
-      this.misc1 = 0,
+      this.misc1 = 0.0,
       this.misc2 = '',
       this.misc3 = '',
       this.misc4 = '',
@@ -77,7 +77,7 @@ class ProductApi {
         json['grossWeight'] != null ? json['grossWeight'].toDouble() : 0.0;
     inStock = json['InStock'] != null ? json['InStock'].toInt() : 0;
     unitType = json['UnitType'] != null ? json['UnitType'] : 0;
-    misc1 = json['misc1'] ?? 0;
+    misc1 = json['misc1'] ?? 0.0;
     misc2 = json['misc2'] ?? '';
     misc3 = json['misc3'] ?? '';
     misc4 = json['misc4'] ?? '';
