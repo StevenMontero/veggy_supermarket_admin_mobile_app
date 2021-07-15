@@ -11,9 +11,10 @@ class BannerRepository {
    al almacenamiento de firebase de las imagenes que se cargan al Carrouselk en la página web.
    @Params : File image, archivo de tipo imatgen.
    @Return : void*/
-  void addNewImage(File file)async{
+  Future<String> addNewImage(File file)async{
     String filePath = p.basename(file.path);
     await storageRef.child('$filePath').putFile(file);
+    return await FirebaseStorage.instance.ref('Banners/' + '$filePath').getDownloadURL();
   }
 
   /*Este método trae de el almacenamiento de firebase todas las imagenes

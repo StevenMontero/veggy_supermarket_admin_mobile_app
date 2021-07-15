@@ -24,11 +24,13 @@ class ImagebannersCubit extends Cubit<ImagebannersState> {
     emit(state.copyWith(photo: _photo));
   }
 
-  void addNewImage() {
+  void addNewImage() async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
-      _bannerRepository.addNewImage(_photo!);
-      getAllBannersImages();
+      var newImage = await _bannerRepository.addNewImage(_photo!);
+      var list = state.imageList;
+      list!.add(newImage);
+      emit(state.copyWith(status: FormzStatus.submissionSuccess, imageList: list));
     } catch (error) {
       emit(state.copyWith(status: FormzStatus.submissionFailure));
     }
