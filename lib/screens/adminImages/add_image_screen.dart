@@ -108,7 +108,7 @@ class _Body extends StatelessWidget {
               ..showSnackBar(
                 const SnackBar(content: Text('Imagen agregada exitosamente')),
               );
-            Navigator.pushNamed(context, 'images');
+            Navigator.of(context).pop();
           }
         },
         icon: Icon(
