@@ -1,11 +1,9 @@
-
-
 import 'package:admin/models/product.dart';
 
 class PreOrder {
   late String codigoCliente;
   late String ordenCompra;
-  late String fechaHora;
+  late DateTime fechaHora;
   late String notas;
   late String cedula;
   late String tipoCedula;
@@ -31,7 +29,7 @@ class PreOrder {
   PreOrder.fromJson(Map<String, dynamic> json) {
     this.codigoCliente = json['codigo_cliente'];
     this.ordenCompra = json['orden_compra'];
-    this.fechaHora = json['fecha_hora'];
+    this.fechaHora = DateTime.parse(json['fecha_hora']);
     this.notas = json['notas'];
     this.cedula = json['cedula'];
     this.tipoCedula = json['tipo_cedula'];
@@ -39,15 +37,15 @@ class PreOrder {
     this.nombreCliente = json['nombre_cliente'];
     this.cargoEnvio = json['cargo_envio'];
     this.bodega = json['bodega'];
-    this.detalles =
-        json['detalles'].map((prodcut) => Product.fromJson(prodcut));
+    this.detalles = List<Product>.from(
+        json['detalles'].map((product) => Product.fromJson(product)));
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['codigo_cliente'] = this.codigoCliente;
     data['orden_compra'] = this.ordenCompra;
-    data['fecha_hora'] = this.fechaHora;
+    data['fecha_hora'] = this.fechaHora.toString();
     data['notas'] = this.notas;
     data['cedula'] = this.cedula;
     data['tipo_cedula'] = this.tipoCedula;

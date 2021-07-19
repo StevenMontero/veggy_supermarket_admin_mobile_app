@@ -4,6 +4,7 @@ import 'package:admin/screens/adminImages/add_image_screen.dart';
 import 'package:admin/screens/adminImages/admin_images_screen.dart';
 import 'package:admin/screens/main/main_screen.dart';
 import 'package:admin/screens/onlieneProductsScreen/online_products_screen.dart';
+import 'package:admin/screens/orderPage/order_screen.dart';
 import 'package:flutter/material.dart';
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
@@ -14,5 +15,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'images': (BuildContext context) => AdminImagesScreen(),
     'addImage': (BuildContext context) => AddImageScreen(),
     'emails': (BuildContext context) => ViewEmailsScreen(),
+    'orders': (BuildContext context) => OrdersOnlineScreen(),
+     'ordersDetail': (BuildContext context) => OrdersOnlineScreen(),
   };
 }

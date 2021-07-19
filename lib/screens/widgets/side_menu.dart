@@ -20,6 +20,15 @@ class SideMenu extends StatelessWidget {
           ),
           Divider(),
           DrawerListTile(
+            title: "Ordenes",
+            svgSrc: "assets/icons/menu_notification.svg",
+            press: () {
+              context.read<MainpageCubit>().changedPage('orders');
+              Navigator.of(context).pop();
+            },
+          ),
+          Divider(),
+          DrawerListTile(
             title: "Imágenes Promocionales",
             svgSrc: "assets/icons/menu_dashbord.svg",
             press: () {
@@ -48,7 +57,7 @@ class SideMenu extends StatelessWidget {
           Divider(),
           DrawerListTile(
             title: "Emails clientes",
-            svgSrc: "assets/icons/menu_notification.svg",
+            svgSrc: "assets/icons/Inbox.svg",
             press: () {
               context.read<MainpageCubit>().changedPage('emails');
               Navigator.of(context).pop();
