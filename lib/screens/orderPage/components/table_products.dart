@@ -49,14 +49,20 @@ class OrderTableWidget extends StatelessWidget {
                             label: Text("Cantidad"),
                           ),
                           DataColumn(
-                            label: Text("Precio\nUnitario",textAlign: TextAlign.center,),
+                            label: Text(
+                              "Precio\nUnitario",
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                           DataColumn(
                             label: Text("Impuesto"),
                           ),
                           DataColumn(
-                          label: Text("Precio+\nImpuesto",textAlign: TextAlign.center,),
-                        ),
+                            label: Text(
+                              "Precio+\nImpuesto",
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ],
                         rows: List.generate(
                           state.preOrdenList[state.indexSelected].detalles
@@ -136,7 +142,6 @@ class OrderTableWidget extends StatelessWidget {
 
 DataRow recentFileDataRow(
     Product fileInfo, BuildContext context, int index, bool searchByCode) {
-     
   return DataRow(
     cells: [
       DataCell(
@@ -145,7 +150,7 @@ DataRow recentFileDataRow(
           overflow: TextOverflow.ellipsis,
         ),
       ),
-      DataCell(Text('x ' + fileInfo.cantidad.toInt().toString())),
+      DataCell(Text('x ' + fileInfo.cantidad.toString())),
       DataCell(Text(fileInfo.precioSinIva.toStringAsFixed(2))),
       DataCell(Text(fileInfo.montoIva.toStringAsFixed(2))),
       DataCell(Text(fileInfo.precioIva.toStringAsFixed(2))),

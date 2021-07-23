@@ -41,16 +41,16 @@ class Product {
       required this.codImpuesto});
   Product.fromJson(Map<String, dynamic> json) {
     this.codigoArticulo = json['codigo_articulo'];
-    this.cantidad = double.parse(json['cantidad']);
+    this.cantidad = json['cantidad'].toDouble();
     this.notas = json['notas'];
     this.envioParcial = json['envio_parcial'];
-    this.precioSinIva = double.parse(json['precio_sin_iva']);
-    this.montoIva = double.parse(json['monto_iva']);
-    this.porcentajeIva = double.parse(json['porcentaje_iva']);
+    this.precioSinIva = json['precio_sin_iva'].toDouble() ?? 0;
+    this.montoIva = json['monto_iva'] > 0 ? json['monto_iva'] : 0.0;
+    this.porcentajeIva = json['porcentaje_iva'].toDouble() ?? 0.0;
     this.codigoTarifa = json['codigo_tarifa'];
-    this.precioIva = double.parse(json['precio_iva']);
-    this.porcentajeDescuento = double.parse(json['porcentaje_descuento']);
-    this.montoDescuento = double.parse(json['monto_descuento']);
+    this.precioIva = json['monto_iva'] > 0 ? json['precio_iva'] : 0.0;
+    this.porcentajeDescuento = json['porcentaje_descuento'].toDouble() ?? 0.0;
+    this.montoDescuento = json['monto_descuento'].toDouble() ?? 0.0;
     this.bonificacion = json['bonificacion'];
     this.codImpuesto = json['cod_impuesto'];
   }

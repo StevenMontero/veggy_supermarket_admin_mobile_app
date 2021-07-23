@@ -1,5 +1,6 @@
 import 'package:admin/models/product_api.dart';
 import 'package:admin/services/production/localServerQupos/qupos_server_repository.dart';
+import 'package:admin/services/production/repositories/product_image_repo.dart';
 import 'package:admin/services/production/repositories/product_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -10,6 +11,7 @@ class LocalproductsCubit extends Cubit<LocalproductsState> {
   LocalproductsCubit() : super(LocalproductsState());
   final _repo = ProductRepository();
   final _repoLocal = QuposRepository();
+  final _imageRepFirebase = ProductImageRepository();
 
   void loadInitialProduct() async {
     emit(state.copyWhith(status: StatusLocal.loading));
@@ -40,7 +42,7 @@ class LocalproductsCubit extends Cubit<LocalproductsState> {
         products = _listProductPaginatated(state.lastIndex, auxSubtract);
       }
     }
-    
+
     emit(state.copyWhith(
       status: StatusLocal.loaded,
       listProduct: products,
@@ -84,6 +86,12 @@ class LocalproductsCubit extends Cubit<LocalproductsState> {
   void addProduct(
       {required String category, required ProductApi product}) async {
     emit(state.copyWhith(statusUpdate: StatusUpdateLocal.loading));
+    final dataImage = await _repoLocal.imageFromBase64String(product.code);
+    if (dataImage['exito']) {
+      final urlImage =
+          await _imageRepFirebase.addNewImage(dataImage['image'], product.code);
+      product.imageUrl = urlImage;
+    }
     await _repo.addProduct(category, product);
     emit(state.copyWhith(statusUpdate: StatusUpdateLocal.updated));
   }
