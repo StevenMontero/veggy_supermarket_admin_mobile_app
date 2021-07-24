@@ -1,8 +1,10 @@
 import 'package:admin/constants.dart';
 import 'package:admin/controllers/MenuController.dart';
 import 'package:admin/routes/routes.dart';
+import 'package:admin/screens/adminImages/cubit/imagebanners_cubit.dart';
 import 'package:admin/screens/main/cubit/mainpage_cubit.dart';
 import 'package:admin/screens/orderPage/orderCubit/order_cubit.dart';
+import 'package:admin/services/production/repositories/banners_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,9 +26,16 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (context) => MenuController(),
           ),
+          BlocProvider(
+            create: (context) =>
+                ImagebannersCubit(BannerRepository())..getAllBannersImages(),
+          ),
         ],
         child: MultiBlocProvider(
-          providers: [BlocProvider(create: (context) => MainpageCubit()),BlocProvider(create: (context) => OrderCubit())],
+          providers: [
+            BlocProvider(create: (context) => MainpageCubit()),
+            BlocProvider(create: (context) => OrderCubit())
+          ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Veggy Admin',

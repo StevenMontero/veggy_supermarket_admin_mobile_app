@@ -20,7 +20,7 @@ class SideMenu extends StatelessWidget {
           ),
           Divider(),
           DrawerListTile(
-            title: "Ordenes",
+            title: "Órdenes",
             svgSrc: "assets/icons/menu_notification.svg",
             press: () {
               context.read<MainpageCubit>().changedPage('orders');
